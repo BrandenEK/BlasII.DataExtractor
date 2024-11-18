@@ -1,4 +1,5 @@
-﻿using BlasII.ModdingAPI;
+﻿using BlasII.CheatConsole;
+using BlasII.ModdingAPI;
 
 namespace BlasII.DataExtractor;
 
@@ -9,8 +10,11 @@ public class DataExtractor : BlasIIMod
 {
     internal DataExtractor() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
 
-    protected override void OnInitialize()
+    /// <summary>
+    /// Registers the extract command
+    /// </summary>
+    protected override void OnRegisterServices(ModServiceProvider provider)
     {
-        // Perform initialization here
+        provider.RegisterCommand(new ExtractCommand());
     }
 }
