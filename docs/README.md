@@ -1,4 +1,4 @@
-# Blasphemous 2 Modding API
+# Blasphemous 2 Data Extractor
 
 ## Features
 - Use the extract command to extract certain data from the game
