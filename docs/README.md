@@ -8,5 +8,7 @@
 - ```extract languages```
 
 ## Installation
-This mod can be built using visual studio
-- Required dependencies: Modding API, Cheat Console
+This mod can be built using visual studio <br>
+Required dependencies:
+- [Modding API](https://github.com/BrandenEK/BlasII.ModdingAPI)
+- [Cheat Console](https://github.com/BrandenEK/BlasII.CheatConsole)
