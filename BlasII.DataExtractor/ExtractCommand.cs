@@ -18,7 +18,8 @@ public class ExtractCommand : ModCommand
     {
         _extractors =
         [
-            new LanguageExtractor()
+            new LanguageExtractor(),
+            new StatsExtractor(),
         ];
     }
 
