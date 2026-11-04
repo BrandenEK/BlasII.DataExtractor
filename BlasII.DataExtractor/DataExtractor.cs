@@ -1,4 +1,5 @@
 ﻿using BlasII.CheatConsole;
+using BlasII.DataExtractor.Extractors;
 using BlasII.ModdingAPI;
 
 namespace BlasII.DataExtractor;
@@ -15,6 +16,6 @@ public class DataExtractor : BlasIIMod
     /// </summary>
     protected override void OnRegisterServices(ModServiceProvider provider)
     {
-        provider.RegisterCommand(new ExtractCommand());
+        provider.RegisterCommand(new ExtractCommand(new LanguageExtractor()));
     }
 }

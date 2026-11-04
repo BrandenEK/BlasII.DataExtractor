@@ -1,40 +1,29 @@
-﻿using BlasII.CheatConsole;
-using BlasII.CheatConsole.Attributes;
+﻿using BlasII.CheatConsole.Attributes;
 using BlasII.CheatConsole.Commands;
-using BlasII.DataExtractor.Extractors;
-using System.Linq;
 
 namespace BlasII.DataExtractor;
 
 /// <summary>
 /// Handles extracting all kinds of game data
 /// </summary>
-public class ExtractCommand : ModSimpleCommand
+public class ExtractCommand : ModComplexCommand
 {
-    private readonly IExtractor[] _extractors;
+    private readonly IExtractor _languageExtractor;
 
     /// <summary>
     /// Creates a new extract command
     /// </summary>
-    public ExtractCommand() : base("extract")
+    public ExtractCommand(IExtractor languages) : base("extract")
     {
-        _extractors =
-        [
-            new LanguageExtractor()
-        ];
+        _languageExtractor = languages;
     }
 
-    [MainCommand]
-    private void Execute(string data)
-    {
-        IExtractor extractor = _extractors.FirstOrDefault(x => x.Name == data);
-        if (extractor == null)
-        {
-            WriteFailure($"{data} is not a valid extraction type");
-            return;
-        }
+    [SubCommand]
+    private void Languages() => Extract(_languageExtractor);
 
-        Write($"Extracting {data}...");
+    private void Extract(IExtractor extractor)
+    {
+        Write($"Extracting {extractor.Name}...");
         extractor.Extract();
     }
 }
