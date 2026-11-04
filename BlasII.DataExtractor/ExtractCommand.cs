@@ -1,4 +1,6 @@
 ﻿using BlasII.CheatConsole;
+using BlasII.CheatConsole.Attributes;
+using BlasII.CheatConsole.Commands;
 using BlasII.DataExtractor.Extractors;
 using System.Linq;
 
@@ -7,7 +9,7 @@ namespace BlasII.DataExtractor;
 /// <summary>
 /// Handles extracting all kinds of game data
 /// </summary>
-public class ExtractCommand : ModCommand
+public class ExtractCommand : ModSimpleCommand
 {
     private readonly IExtractor[] _extractors;
 
@@ -22,19 +24,17 @@ public class ExtractCommand : ModCommand
         ];
     }
 
-    /// <summary>
-    /// Extracts a certain kind of data
-    /// </summary>
-    public override void Execute(string[] args)
+    [MainCommand]
+    private void Execute(string data)
     {
-        IExtractor extractor = _extractors.FirstOrDefault(x => x.Name == args[0]);
+        IExtractor extractor = _extractors.FirstOrDefault(x => x.Name == data);
         if (extractor == null)
         {
-            WriteFailure($"{args[0]} is not a valid extraction type");
+            WriteFailure($"{data} is not a valid extraction type");
             return;
         }
 
-        Write($"Extracting {args[0]}...");
+        Write($"Extracting {data}...");
         extractor.Extract();
     }
 }
