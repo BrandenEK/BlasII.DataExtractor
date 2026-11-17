@@ -30,5 +30,6 @@ public class ExtractCommand : ModComplexCommand
     {
         Write($"Extracting {extractor.Name}...");
         extractor.Extract();
+        Write($"Finished extracting {extractor.Name}");
     }
 }
