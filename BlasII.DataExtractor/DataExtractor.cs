@@ -16,6 +16,6 @@ public class DataExtractor : BlasIIMod
     /// </summary>
     protected override void OnRegisterServices(ModServiceProvider provider)
     {
-        provider.RegisterCommand(new ExtractCommand(new LanguageExtractor()));
+        provider.RegisterCommand(new ExtractCommand(new LanguageExtractor(), new QuestExtractor()));
     }
 }
